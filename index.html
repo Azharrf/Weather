@@ -14,36 +14,31 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row side-left">
-            <div class="col-md-3 weather-city">
+        <div class="row">
+            <div class="col-md-12 col-lg-3 weather-city">
                 <div class="input-group flex-nowrap search-container align-items-center">
                     <span class="input-group-text" id="addon-wrapping"><i class='bx bx-search'></i></span>
                     <input type="text" class="form-control search-input" placeholder="Search for places..."
                         aria-label="Username" aria-describedby="addon-wrapping">
                     <a href="#" class="search-button">Cari</a>
-                    <!-- <a class="button-close"><i class='bx bxs-x-circle'></i></a> -->
                 </div>
 
-                <div class="main-wea
-                ther">
-                    <img src="img/day/293.png" alt="weather" id="weather-main">
+                <div class="main-weather">
+                    <img src="" alt="weather" id="weather-main">
                 </div>
 
                 <div class="time">
-                    <h1 id="suhu">12<span>°C</span></h1>
+                    <h1 id="suhu">0<span>°C</span></h1>
                     <h3 id="date-time">Monday, <span>16:00</span></h3>
                 </div>
 
                 <hr>
 
-                <div class="weather-predict">
-                    <div class="weather-coludy d-flex align-items-center">
-                        <img src="img/day/119.png" alt="" id="img-desc">
-                        <p class="desc">Mostly Cloudy</p>
-                    </div>
+                <div class="weather-coludy d-flex align-items-center">
+                    <img src="" alt="" id="img-desc">
 
-                    <div class="weather-rain d-flex align-items-center">
-                        <img src="img/day/263.png" alt="" id="img-main">
+                    <div class="weather-rain d-flex flex-column justify-content-evenly">
+                        <p class="desc">Mostly Cloudy</p>
                         <p class="main">Rain</p>
                     </div>
                 </div>
@@ -54,54 +49,57 @@
                 </div>
             </div>
 
-            <div class="col-md-9 weather-prediksi d-flex flex-column justify-content-between align-items-center">
+            <div
+                class="col-md-12 col-lg-9 weather-prediksi d-flex flex-column justify-content-between align-items-center">
                 <div class="header d-flex align-items-center">
-                    <ul>
-                        <li><a href="#">Today</a></li>
-                        <li><a href="#">Week</a></li>
-                    </ul>
-                    <button class="suhu-btn celcius active">°C</button>
-                    <button class="suhu-btn fahrenheit">°F</button>
+                    <h1>Weekly</h1>
+                    <a onclick="suhuBtn('celcius')" class="suhu-btn celcius active">°C</a>
+                    <a onclick="suhuBtn('fahrenheit')" class="suhu-btn fahrenheit">°F</a>
                     <div class="avatar">
                         <img src="img/people1.jpg" alt="Avatar User">
                     </div>
                 </div>
 
-                <div class="week-weather d-flex flex-row justify-content-between"></div>
+                <div class="week-weather"></div>
 
-                <div class="highlights">
-                    <h1>Today's Highlights</h1>
+                <div class="highlights d-flex flex-row flex-wrap justify-content-between">
+                    <h1 class="title-highlight">Today's Highlights</h1>
 
-                    <div class="hightlight d-flex justify-content-between flex-column">
+                    <div class="col-6 col-md-4 col-xl-4 hightlight d-flex justify-content-between flex-column">
                         <h3>UV Index</h3>
-                        <h1 id="uv-index">7.70</h1>
+
+                        <div class="semi-donut">
+                            <div class="bar"></div>
+                            <h1 id="uv-index">0</h1>
+                        </div>
+
                     </div>
 
-                    <div class="hightlight d-flex justify-content-between flex-column">
+                    <div class="col-6 col-md-4 col-xl-4 hightlight d-flex justify-content-between flex-column">
                         <h3>Wind Status</h3>
-                        <h1 id="speed">7.70 <span>km/h</span></h1>
+                        <h1 id="speed">0.00 <span>km/h</span></h1>
 
                         <div class="wsw d-flex flex-row align-items-center">
                             <i class='bx bxs-map'></i>
-                            <h5>WSW</h5>
+                            <h5 id="direct">WSW</h5>
                         </div>
                     </div>
 
-                    <div class="hightlight d-flex justify-content-between flex-column">
+                    <div class="col-6 col-md-4 col-xl-4 hightlight d-flex justify-content-between flex-column">
                         <h3>Sunrise & Sunset</h3>
-                        <div class="sunrise d-flex flex-column">
+                        <div class="sunrise d-flex align-items-center">
                             <i class='bx bx-up-arrow-alt'></i>
-                            <h2 id="sunrise">6:35 AM</h2>
+                            <h2 id="sunrise">00:00 AM</h2>
                         </div>
-                        <div class="sunset d-flex flex-column">
+                        <div class="sunset d-flex align-items-center">
                             <i class='bx bx-down-arrow-alt'></i>
-                            <h2 id="sunset">5:52 PM</h2>
+                            <h2 id="sunset">00:00 PM</h2>
                         </div>
                     </div>
 
-                    <div class="hightlight d-flex justify-content-between flex-column">
+                    <div class="col-md-4 hightlight d-flex justify-content-between flex-column">
                         <h3>Humidity</h3>
-                        <h1 id="humidity">12<span>%</span></h1>
+                        <h1 id="humidity">0<span>%</span></h1>
 
                         <div class="progress">
                             <div class="progress-bar humidity-progress" role="progressbar" aria-valuenow="75"
@@ -109,30 +107,30 @@
                         </div>
 
                         <div class="wsw d-flex flex-row align-items-center">
-                            <h5>normal</h5>
+                            <h5 id="level-hmdty">normal</h5>
                         </div>
                     </div>
 
-                    <div class="hightlight d-flex justify-content-between flex-column">
+                    <div class="col-md-4 hightlight d-flex justify-content-between flex-column">
                         <h3>Visibility</h3>
-                        <h1 id="visibility">7.2 <span>km</span></h1>
+                        <h1 id="visibility">0<span>km</span></h1>
 
                         <div class="wsw d-flex flex-row align-items-center">
-                            <h5>Average</h5>
+                            <h5 id="level-vsblty">Average</h5>
                         </div>
                     </div>
 
-                    <div class="hightlight d-flex justify-content-between flex-column">
+                    <div class="col-md-4 hightlight d-flex justify-content-between flex-column">
                         <h3>Air Quality</h3>
-                        <h1 id="aqi">105</h1>
+                        <h1 id="aqi">0</h1>
 
                         <div class="progress">
                             <div class="progress-bar air-progress" role="progressbar" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                                aria-valuemin="0" aria-valuemax="400"></div>
                         </div>
 
                         <div class="wsw d-flex flex-row align-items-center">
-                            <h5 id="main">Unhealthy</h5>
+                            <h5 id="level-air">Unhealthy</h5>
                         </div>
                     </div>
                 </div>

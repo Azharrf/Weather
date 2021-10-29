@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 *{
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body{
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     font-family: 'Poppins', sans-serif;
     color: black;
 }
@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6, p{
 }   
 
 .container, .side-left, .weather-city, .weather-prediksi{
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .weather-city{
@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6, p{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .weather-city .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
@@ -46,6 +47,8 @@ h1, h2, h3, h4, h5, h6, p{
     border: none;
     background: transparent;
     padding: unset;
+    font-weight: 900;
+    font-size: 20px;
 }
 
 .weather-city .input-group input{
@@ -53,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p{
     font-size: 14px;
     border: none;
     padding: .4rem .4rem .4rem .7rem;
-    margin-right: 10px;
+    transition: linear .5s ease;
 }
 
 .weather-city .input-group input:focus{
@@ -61,49 +64,26 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .weather-city .input-group .search-button{
-    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 10px !important;
+    background-color: black;
     color: white;
-    padding: 4px 10px;
-    border-radius: 6px !important;
-    background: black;
-    text-decoration: none;
-    transition: all .2s ease;
+    display: none;
 }
 
-.weather-city .input-group .search-button:hover{
-    background: rgb(83, 83, 83);
-}
-
-.weather-city .input-group .button-close{
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 50% !important;
-}
-
-.weather-city .input-group .button-close:hover{
-    background: #ececee;
-    /* border: .5px solid rgb(208, 208, 216); */
-    transition: all .4s ease;
+.weather-city .main-weather{
+    height: max-content;
 }
 
 .weather-city .main-weather img{
     min-width: 65%;
 }
 
-/* .weather-city .time{
-    margin-bottom: 30px;
-} */
-
 .weather-city .time h1{
-    font-size: 70px;
+    font-size: 75px;
     font-weight: 400;
     display: flex;
+    margin-bottom: 10px;
 }
 
 .weather-city .time h1 span{
@@ -113,7 +93,7 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .weather-city .time h3{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -121,17 +101,14 @@ h1, h2, h3, h4, h5, h6, p{
     color: rgb(0, 0, 0, .3);
 }
 
-.weather-predict img{
-    width: 15%;
+.weather-coludy img {
+    width:30%;
+    margin-right: 5px;
 }
 
-.weather-predict p{
+.weather-rain{
+    height: 50%;
     font-size: 14px;
-    margin-left: 10px;
-}
-
-.weather-predict.weather-rain{
-    margin-bottom: 20px;
 }
 
 .city{
@@ -167,27 +144,10 @@ h1, h2, h3, h4, h5, h6, p{
     background: #f7f7f9;
 }
 
-.header ul {
+.header h1{
     flex: 1;
-    margin: unset;
-    padding: unset;
-}
-
-.header ul li{
-    display: inline-block;
-    list-style: none;
-    margin: 0 10px;
-}
-
-.header ul li a{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    text-decoration: none;
-    color: rgb(0, 0, 0, .4);
-}
-
-.header ul li a:hover{
-    color: rgb(0, 0, 0, 1);
 }
 
 .header .suhu-btn{
@@ -212,6 +172,11 @@ h1, h2, h3, h4, h5, h6, p{
     background: black;
 }
 
+.header .suhu-btn.active{
+    color: white;
+    background-color: black;
+}
+
 .header .avatar{
     width: 5%;
     margin-left: 15px;
@@ -227,60 +192,85 @@ h1, h2, h3, h4, h5, h6, p{
 
 .week-weather{
     width: 100%;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 
 .week-weather .day-weather{
-    width: 110px;
-    height: 130px;
+    width: 120px;
+    height: 150px;
     background: white;
     border-radius: 13px;
+    position: relative;
 }
 
 .week-weather .day-weather p{
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+}
+
+.day-weather .day{
+    position: absolute;
+    top: 12px;
+}
+
+.day-weather .suhu{
+    position: absolute;
+    bottom: 12px;
+}
+
+.day-weather span{
+    margin-left: 5px;
+    color: rgb(0, 0, 0, .4);
 }
 
 .highlights{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 20px 150px 150px;
-    gap: 20px 20px;
     width: 100%;
+    position: relative;
 }
 
-.highlights h1{
+.title-highlight {
     font-size: 20px;
     font-weight: 600;
-    grid-column: 1 / -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
 .hightlight{
-    min-height: 90%;
+    width: 300px;
+    height: 160px;
     padding: 20px;
+    top: 35px;
+    margin-bottom: 20px;
     background-color: white;
     border-radius: 10px;
     position: relative;
 }
 
-.hightlight h3{
+.hightlight h3 {
     font-size: 14px;
     color: rgb(0, 0, 0, .3);
 }
 
-.hightlight h1{
-    font-size: 35px;
+.hightlight h1 {
+    font-size: 34px;
+    font-weight: 600;
 }
 
-.hightlight h1 span{
+.hightlight h1 span {
     font-size: 18px;
 }
 
-.hightlight h2{
+.hightlight h2 {
     font-size: 18px;
 }
 
-.hightlight h5{
+.hightlight h5 {
     font-size: 12px;
 }
 
@@ -296,26 +286,55 @@ h1, h2, h3, h4, h5, h6, p{
     margin-right: 10px;
 }
 
-.hightlight .sunrise p, .hightlight .sunset p{
-    font-size: 11px;
-    font-weight: 500;
-    color: rgba(0, 0, 0, .3);
+.semi-donut{
+    width: 100%;
+    height: 72%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
+.semi-donut .bar{
+    position: absolute;
+    top: 0;
+    width: 172px;
+    height: 172px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 20px solid #f3f3f3;
+    border-bottom-color: #ffbf5e;
+    border-right-color: #ffbf5e;
+    transform: rotate(45deg);
+    /* transition: all 2s ease; */
+}
 
-.hightlight .sunrise, .hightlight .sunset{
+/* .semi-donut::after{
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 172px;
+    height: 172px;
+    border: 20px solid;
+    border-color: #ffbf5e #ffbf5e #f3f3f3 #f3f3f3;
+    border-radius: 50%;
+    transform: rotate(135deg);
+    z-index: 100;
+} */
+
+.hightlight .sunrise,
+.hightlight .sunset{
     margin-top: 13px;
-    position: relative;
-    padding-left: 35px;
 }
 
 .hightlight .sunrise i,
 .hightlight .sunset i {
-    position: absolute;
-    left: 0;
-    top: 5px;
+    width: 30px;
+    height: 30px;
     background: #fee04d;
-    border: 2px solid #fdc368;
+    border: 3px solid #fdc368;
     color: white;
 }
 
@@ -323,7 +342,7 @@ h1, h2, h3, h4, h5, h6, p{
     position: absolute;
     right: 10%;
     width: 10px;
-    height: 73%;
+    height: 75%;
     opacity: .8;
     filter: alpha(opacity=80);
 }
@@ -335,13 +354,193 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .air-progress{
-    height: 65%;
+    height: 0%;
+    transition: all 2s ease;
 }
 
 .humidity-progress{
-    height: 12%;
+    height: 0%;
+    transition: all 1.5s ease;
 }
 
 .toast{
     display: none;
+}
+
+@media (max-width: 1024px){
+    .highlights{
+        height: 410px;
+    }
+    .hightlight{
+        top: 50px;
+        max-width: 220px;
+    }
+    .week-weather{
+        /* flex-wrap: wrap;
+        justify-content: unset; */
+        overflow-x: scroll;
+    }
+    .week-weather .day-weather{
+        width: 120px;
+        margin-right: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 884px) {
+    .weather-city .input-group input {
+        margin-right: 10px;
+        height: unset;
+    }
+
+    .weather-city .input-group .search-button {
+        display: block;
+    }
+
+    .weather-city .main-weather{
+        width: 20%;
+    }
+    .weather-city .main-weather img{
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 576px) {
+    .weather-city{
+        padding: 30px 16pt;
+        display: unset;
+        height: unset;
+    }
+
+    .weather-city .input-group input{
+        margin-right: 10px;
+        height: unset;
+    }
+
+    .weather-city .input-group .search-button {
+        display: block;
+    }
+
+    .weather-city .main-weather{
+        width: 40%;
+        position: absolute;
+        top: 17%;
+        left: 10px;
+    }
+
+    .weather-city .main-weather img{
+        width: 100%;
+    }
+
+    .weather-city .time{
+        z-index: 100;
+        margin: 40px 0 30px 45%;
+    }
+
+    .weather-city .time h1{
+        font-size: 56px;
+        font-weight: 500;
+        margin-bottom: unset;
+    }
+    .weather-city .time h1 span{
+        font-size: 22px;
+    }
+    .weather-city .time h3{
+        font-size: 16px;
+    }
+
+    .weather-city .weather-coludy{
+        width: 50%;
+        height: 50px;
+        position: absolute;
+        top: 73%;
+        left: 45%;
+        z-index: 100;
+        color: white;
+        /* background-color: violet; */
+    }
+
+    .weather-city .weather-coludy img{
+        width: max-content;
+        height: 100%;
+        margin-right: 10px;
+    }
+
+    .weather-city .city{
+        margin-top: 30px;
+        justify-content: start !important;
+        align-items: center !important;
+    }
+    .weather-city .city p{
+        margin-left: 30px;
+    }
+
+    .weather-city .city .overlay{
+        background: rgba(0, 0, 0, .45);
+    }
+
+    .weather-prediksi {
+        height: 85vh;
+        padding: 30px 16pt;
+    }
+
+    .week-weather {
+        width: 100%;
+        min-height: 170px;
+        /* margin: 20px auto 30px; */
+        overflow-x: scroll;
+    }
+
+    .day-weather{
+        margin-right: 13px;
+    }
+
+    .highlights{
+        width: 100%;
+        height: max-content;
+        margin-bottom: 30px;
+    }
+
+    .hightlight{
+        max-width: 47.5%;
+        height: 130px;
+        padding: 15px;
+    }
+
+    .semi-donut {
+        height: 60px;
+        margin: auto;
+    }
+
+    .semi-donut .bar {
+        width: 120px;
+        height: 120px;
+        border: 20px solid #f3f3f3;
+        border-bottom-color: #ffbf5e;
+        border-right-color: #ffbf5e;
+    }
+
+    .semi-donut #uv-index{
+        position: absolute;
+        top: 28px
+    }
+
+    .progress {
+        height: 80%;
+    }
+
+    .hightlight .sunrise i,
+    .hightlight .sunset i {
+        width: 25px;
+        height: 25px;
+    }
+
+    .hightlight h1 {
+        font-size: 30px;
+    }
+    .hightlight h5 {
+        font-size: 13px;
+    }
 }
