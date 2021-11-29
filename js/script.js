@@ -183,6 +183,7 @@ function predictDaily(e){
 }
 
 function weatherDaily(d){
+    console.log(d)
     return `<div class="day-weather d-flex flex-column justify-content-center align-items-center">
                 <p class="day">${window.moment(d.dt*1000).format('ddd')}</p>
                 <img src="https://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png" alt="">
